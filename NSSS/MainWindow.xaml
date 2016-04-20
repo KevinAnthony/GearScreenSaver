@@ -1,0 +1,34 @@
+﻿<Window x:Class="NSSS.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" WindowStyle="None"     Background="Black"
+        Title="MainWindow" Height="350" Width="525">
+    <Viewport3D x:Name="ViewPort">
+        <Viewport3D.Camera>
+            <PerspectiveCamera Position="0,-30,0" 
+                               LookDirection="0,30,0" 
+                               UpDirection="0,0,-1" 
+                               NearPlaneDistance="0.01" 
+                               FarPlaneDistance="Infinity" 
+                               FieldOfView="40">
+
+                <!-- I have to comment out the below to make the shape not rotate -->
+                <PerspectiveCamera.Transform>
+                    <Transform3DGroup>
+                        <RotateTransform3D>
+                            <RotateTransform3D.Rotation>
+                                <AxisAngleRotation3D Axis="0,0,1" Angle="0" x:Name="CamRotation" />
+                            </RotateTransform3D.Rotation>
+                        </RotateTransform3D>
+                    </Transform3DGroup>
+                </PerspectiveCamera.Transform>
+
+            </PerspectiveCamera>
+        </Viewport3D.Camera>
+        <!-- Remember to add light to the scene -->
+        <ModelVisual3D x:Name="Coin"/>
+    </Viewport3D>
+</Window>
+
